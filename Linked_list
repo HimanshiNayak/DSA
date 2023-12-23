@@ -1,0 +1,108 @@
+#include <iostream>
+
+template <typename T>
+class Node {
+public:
+    T data;
+    Node* next;
+
+    Node(T value) : data(value), next(nullptr) {}
+};
+
+template <typename T>
+class LinkedList {
+private:
+    Node<T>* head;
+
+public:
+    LinkedList() : head(nullptr) {}
+
+    // Function to insert a new element at the end of the linked list
+    void insert(T value) {
+        Node<T>* newNode = new Node<T>(value);
+
+        if (head == nullptr) {
+            head = newNode;
+        } else {
+            Node<T>* current = head;
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+            current->next = newNode;
+        }
+    }
+
+    // Function to print the linked list
+    void display() {
+        Node<T>* current = head;
+        while (current != nullptr) {
+            std::cout << current->data << " ";
+            current = current->next;
+        }
+        std::cout << std::endl;
+    }
+
+    // Function to delete a node with a specific value
+    void deleteNode(T value) {
+        Node<T>* current = head;
+        Node<T>* previous = nullptr;
+
+        // If the node to be deleted is the head
+        if (current != nullptr && current->data == value) {
+            head = current->next;
+            delete current;
+            return;
+        }
+
+        // Search for the node to be deleted
+        while (current != nullptr && current->data != value) {
+            previous = current;
+            current = current->next;
+        }
+
+        // If the node is not present
+        if (current == nullptr) {
+            std::cout << "Node with value " << value << " not found." << std::endl;
+            return;
+        }
+
+        // Unlink the node from the linked list
+        previous->next = current->next;
+
+        // Delete the node
+        delete current;
+    }
+
+    // Destructor to free memory when the linked list object is destroyed
+    ~LinkedList() {
+        Node<T>* current = head;
+        Node<T>* next = nullptr;
+
+        while (current != nullptr) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+        head = nullptr;
+    }
+};
+
+int main() {
+    // Example usage of the linked list
+    LinkedList<int> myList;
+
+    myList.insert(1);
+    myList.insert(2);
+    myList.insert(3);
+    myList.insert(4);
+
+    std::cout << "Original linked list: ";
+    myList.display();
+
+    myList.deleteNode(3);
+
+    std::cout << "Linked list after deleting node with value 3: ";
+    myList.display();
+
+    return 0;
+}
