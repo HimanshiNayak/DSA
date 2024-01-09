@@ -1,1 +1,208 @@
+//queues :fifo or fcfs first come first serve // the first ele to be added will be processed first :only front can be accessed
+//enqueue :inswerrt data  // end at tail
+//dequeue: to remove element  // remove from front
+//isfull: tells if queue is full
+//isempty: if is empty             
+////* front: gives the ele that came first  //head.data
+//size for size
+// front: tracks the first element  //
 
+//types: simple queue
+//1. simple: first come first processed
+//2. priority queue:largest , smallest etc
+//3. priority queue: front always after rear
+//4.double ended: deque: from both sides insertion and deletion:
+
+#include<iostream>
+using namespace std;
+class node{
+	node* next;
+	int data;
+	public:
+		node(int val){
+			this->data= val;
+			this->next =NULL;
+		}
+	};
+	class  queue{
+		node* tail;
+		node* head;
+		int size;
+		public:
+		queue(){
+			this->head = NULL;
+			this->tail= NULL;	
+			this->size = 0;
+			}
+		void enqueue(int data){
+			node* newnode = new node(data);
+			if(head==NULL){
+				this->head = this->tail=newnode;
+			}
+			else{
+				this->tail->next =newnode;
+				this->tail = newnode;
+			}
+			this->size++;		
+		}
+		void dequeue{
+			if(this->head== NULL){
+				cout<<"Nothing to delete .";
+			}
+			else{
+				node* newhead = this->head->next;
+				node* oldhead = this->head;
+				this->head = newhead;
+				if(this->head==NULL)this->tail = NULL;
+				oldhead->next = NULL
+				delete oldhead;
+				this->size--;
+			}
+		}
+		int getsize(){
+			return this->size;
+			
+		}
+		bool isEmpty{
+			return this->head ==NULL;
+		}
+		int front{
+			return this->head;
+		}
+};
+
+//array implementation:
+
+#include<vector>
+using namespace std;
+class que{
+	int front;
+	int back;
+//	vector<int>v;
+	public:
+		vector<int>v;
+		que(){
+			this->front =-1;
+			this->back = -1;
+		}
+		void enque(int data){
+			v.push_back(data);
+			this->back++;
+			if(this->back==0) this->front =0;
+		}
+		void deque(){
+			if (this->front == this->back){
+				this->front =-1;
+				this->back =-1;
+			}
+			else this->front++;
+		}
+		int getfront(){
+			if(this->front==-1 )return -1;
+			return this->v[this->front];
+		}
+		bool is_empty(){
+			return this->front==-1;
+		}
+		void display(){
+			while(!(is_empty())){
+				cout<<this->v[this->front]<<"\n";
+				this->front ++;
+			}
+		}
+};
+int main(){
+	que u;
+	u.enque(10);
+	u.enque(188);
+	u.enque(66);
+	u.deque();
+	u.deque();
+	u.display();
+	return 0;
+}
+#include<iostream>
+#include<queue>
+//using namespace std;
+//int main(){
+//	queue<int>qu;
+//	qu.push(10);
+//	qu.push(12);
+//	qu.push(34);
+//	qu.pop();
+//	while(not qu.empty()){
+//		cout<<qu.front<<"\n";
+//		qu.pop();
+//	}
+//}
+
+//to reverese a queue bring the elements to a stack and then keep them back:
+
+#include<stack>
+//using namespace std;
+//int main(){
+//	queue<int>q;
+//	q.push(10);
+//	q.push(100);
+//	q.push(0);
+//	q.push(1);
+//	stack<int>s;
+//	while(not q.empty()){
+//		s.push(q.front());
+//		q.pop();
+//	}
+//	while(not s.empty()){
+//		q.push(s.top());
+//		s.pop();
+//	}
+//	while(not q.empty()){
+//		cout<<q.front()<<" ";
+//		q.pop();
+//	}
+//	
+//}
+
+//deque : double ended que . operations from both sides:
+
+#include<deque>
+using namespace std;
+//int main(){
+//	deque<int>d;
+//	d.push_back(10);
+//	d.push_back(100);
+//	d.push_back(78);
+//	d.push_front(188);
+//	d.push_front(900);
+//	d.pop_back();
+//	d.pop_front();
+//	while(not d.empty()){
+//		cout<<d.front()<<" ";
+//		d.pop_front();
+//	}
+//}
+class node{
+	int pri;
+	int data;
+	node *link;
+};
+class pq{
+	private:
+		node *f;
+	public:
+		pq(){
+			f =NULL;
+		}	
+		void insert(int p , int data){
+			node *t ,*q;
+			t = new node;
+			t->data= data;
+			t->p= p;
+			if(f==NULL||p<f->p){
+				t->link =f;
+				f=t;	
+			}
+			else{
+				
+			}
+		}
+};
