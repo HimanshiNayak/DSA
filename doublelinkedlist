@@ -1,1 +1,148 @@
+#include<iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node *pre;
+    node *next;
+};
+class DLL{
+    public:
+    node *head;
+    node *last;
+    DLL(){
+        head = NULL;
+        last = NULL;
+    }
+    void create();
+    void display();
+    void delete_begin();
+    void insert_begin();
+    void insert_last();
+	void insert_at_position(int p , int el);
+	void deletion_last();
+	void deletion_begin();
+	void deletion_at_position();
 
+};
+void DLL::create(){
+    node *t=new node;
+    cout<<"Enter the data: ";
+//    int n;
+    // cin>>n;
+    cin>>t->data;//we can call directly as well
+    t->pre = last;
+    t->next =NULL;
+    
+    if(head==NULL){
+        head = t;
+        last = t;
+    }
+    else{
+        last->next=t;
+        last=t;
+    }
+};
+void DLL ::insert_begin(){
+	node *temp = new node;
+	cout<<"Enter the data to insert at begin:";
+	cin >>temp->data;
+	temp->pre = NULL;
+	temp->next = head;
+	head ->pre = temp;
+	head = temp;	
+}
+void DLL::display(){
+    node *temp=head;
+    cout<<"My double linked list: "<<endl;
+    if(temp ==NULL){
+    	cout<<"My double linked list is empty";
+	}
+	else{		
+    while(temp !=NULL){
+    cout<<temp->data<<"==>";
+    temp=temp->next;
+    }
+    // cout<<temp->data;
+    cout<<"NULL";
+}
+}
+void DLL::insert_last(){
+	node * temp = new node;
+	cout<<"Enter the data to insert at last: ";
+	cin>>temp->data;
+	temp->pre = NULL;
+	temp->next=NULL;
+	last->next= temp;
+	temp->pre=last;
+	last = temp;	
+}
+void DLL::insert_at_position(int p , int el){
+	node *temp = new node;
+//	cout<<"Enter the data to insert at begin:";
+	temp->data =el;;
+	temp->pre = NULL;
+	temp->next = NULL;
+    int counter =1;
+    node *cr = head;
+    node *pr = NULL;
+    while(cr->next !=NULL && counter<p){
+    	pr = cr;
+    	cr = cr->next;
+    	    counter ++;
+	}
+	if(counter==p){
+		pr->next = temp;
+		temp->pre = pr;
+		cr->pre= temp;
+		temp->next = cr;
+	}
+}
+void DLL::deletion_last(){
+	node *temp = last;
+	last = last->pre;
+	last ->next = NULL;
+	cout<<"Deleted element: "<<temp->data<<endl;
+	delete temp;
+}
+void DLL::deletion_begin(){
+	node *temp = head;
+	head = head->next;
+	head->pre = NULL;
+	cout<<"Delete element: "<<temp->data<<endl;
+	delete temp;
+}
+void DLL::deletion_at_position(){
+	int pos;
+	int count = 1;
+	cout<<"Enter the position to delete: ";
+	cin>>pos;
+	node *pr ,*cr = head;
+	while (cr->next!=NULL && count<pos){
+		pr = cr;
+		cr = cr->next;
+		count ++;
+	}
+	pr->next = cr->next;
+    last->pre=cr->pre;
+    delete cr;
+}
+int main(){
+	int n;
+	cout<<"Enter the number of elements in double linked list:"<<endl;
+	DLL l;
+
+	cin>>n;
+	for (int i = 0 ; i<n ; i++){
+	
+	    l.create();
+}
+l.insert_begin();
+l.insert_last();
+l.insert_at_position(3,7);
+l.deletion_last();
+l.deletion_begin();
+l.deletion_at_position();
+l.display();
+
+}
