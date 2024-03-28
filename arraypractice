@@ -50,34 +50,36 @@ Average grades:
 Student 1: 82.5
 Student 2: 72.5
 Student 3: 90.5
+///solution
 
-Note :
-The program will be evaluated only after the “Submit Code” is clicked.
-Extra spaces and new line characters in the program output will result in the failure of the test case.
-Marks : 10
-Negative Marks : 0
-Fill your code here
-C++ (17)
-1
-2
-3
-4
-5
-6
-7
-8
-9
-float average(int a[] , int n){
-    float sum = 0;
-    float average =0;
-    for(int i=0;i<n;i++){
-        sum+=a[i];
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void calculateAverage(float grades[][100], int numStudents, int numSubjects) {
+    cout << "Average grades:" << endl;
+    for(int i = 0; i < numStudents; ++i) {
+        float sum = 0;
+        for(int j = 0; j < numSubjects; ++j) {
+            sum += grades[i][j];
+        }
+        float average = sum / numSubjects;
+        cout << "Student " << (i + 1) << ": " << fixed << setprecision(1) << average << endl;
     }
-    average = sum/n;
-    cout
 }
-Provide Custom Input
-Clear
-Compile & Run
-Submit Code
-Next
+
+int main() {
+    int numStudents, numSubjects;
+    cin >> numStudents >> numSubjects;
+    
+    float grades[100][100];
+    for(int i = 0; i < numStudents; ++i) {
+        for(int j = 0; j < numSubjects; ++j) {
+            cin >> grades[i][j];
+        }
+    }
+    
+    calculateAverage(grades, numStudents, numSubjects);
+    
+    return 0;
+}
