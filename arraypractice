@@ -1,1 +1,83 @@
+Question No : 1 
+You have multiple arrays containing student grades for different subjects. You want to merge these arrays and calculate the average grade for each student. Write a function that takes these arrays as input and returns an array with the average grades.
 
+Input format :
+
+The first line of input contains the number of students (numStudents).
+
+The second line of input contains the number of subjects (numSubjects).
+
+The next numStudents lines contain numSubjects, space-separated grades for each student.
+
+Output format :
+
+The output displays the average grades for each student.
+
+Each line of output contains the average grade for a student in the format "Student [student_number]: [average_grade]" with a round off one digit.
+
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+
+1 <= numStudents <= 100 (maximum number of students)
+
+1 <= numSubjects <= 100 (maximum number of subjects)
+
+The grades are real numbers.
+
+Sample test cases :
+Input 1 :
+2
+4
+70 80 90 100
+60 80 100 70
+Output 1 :
+Average grades:
+Student 1: 85.0
+Student 2: 77.5
+
+Input 2 :
+3
+4
+80 90 75 85
+70 65 80 75
+90 85 95 92
+Output 2 :
+Average grades:
+Student 1: 82.5
+Student 2: 72.5
+Student 3: 90.5
+
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Fill your code here
+C++ (17)
+1
+2
+3
+4
+5
+6
+7
+8
+9
+float average(int a[] , int n){
+    float sum = 0;
+    float average =0;
+    for(int i=0;i<n;i++){
+        sum+=a[i];
+    }
+    average = sum/n;
+    cout
+}
+Provide Custom Input
+Clear
+Compile & Run
+Submit Code
+Next
