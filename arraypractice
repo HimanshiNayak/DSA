@@ -2,7 +2,6 @@ Question No : 1
 You have multiple arrays containing student grades for different subjects. You want to merge these arrays and calculate the average grade for each student. Write a function that takes these arrays as input and returns an array with the average grades.
 
 Input format :
-
 The first line of input contains the number of students (numStudents).
 
 The second line of input contains the number of subjects (numSubjects).
