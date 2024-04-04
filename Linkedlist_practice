@@ -1,1 +1,121 @@
- 
+#include <bits/stdc++.h>
+using namespace std;
+class Node{
+	public:
+	Node* next;
+	int data;
+	Node(){
+		next=NULL;
+	}
+};
+class LL{
+	public:
+	Node* head;
+	LL(){
+		head=NULL;
+	}
+	void insert(int x){
+		Node* t = new Node();
+		t->data = x;
+		if(head==NULL){
+			head= t;
+		}
+	    Node* temp = head;
+	    while(temp->next !=NULL){
+	    	temp= temp->next;
+		}
+		temp->next =t;
+		
+	}
+	
+Node* deletealt(Node* &head){
+	if(head == NULL){
+	return head;	
+	}
+	Node* i = head;
+	Node* j = head->next;
+	while(j!= NULL && i!= NULL){
+		Node* temp = j ;
+		i->next = temp->next;
+		delete  temp;
+		i = i->next;
+		if(i!=NULL){
+		  j = i->next; 
+		}
+
+	}
+	return head;
+}
+
+void deletedup(Node* &head){
+	Node* cur = head;
+	if(head==NULL){
+		cout<<"Empty";
+	}
+	while(cur!=NULL && cur->next !=NULL){
+		if(cur->data == cur->next->data){
+			Node* temp = cur->next;
+			cur->next = temp->next ;
+			delete temp;
+			
+		}
+		cur = cur->next;
+	}
+}
+//using recursion just print in rev order
+void reverseprint(Node* &head){
+	if(head == NULL){
+		cout<<"Empty";
+	}
+	Node* temp = head;
+	reverseprint(head->next){
+		cout<<temp->data<<"->";
+	}
+	cout<<"NULL";
+}
+//reversing the ll
+Node* reverse(Node* &head){
+if(head==NULL){
+return NULL;
+}
+else{
+Node* pre = NULL;
+Node* cur = head;
+
+while(cur!=NULL){
+Node* next = cur->next;	
+cur->next = pre;
+pre = cur;
+cur = next;
+}	
+return pre; //after reversing pre bcms the new head
+}
+
+void display(){
+	if (head==NULL){
+		cout<<"Nothing to display";
+	}
+	else{
+		Node* temp = head;
+		while(temp!=NULL){
+			cout<<temp->data<<"->";
+			temp = temp->next;
+		}
+		cout<<"NULL";
+	}
+}
+};
+int main(){
+	int n,val;
+	cin>>n;
+	LL l;
+	for(int i=0;i<n;i++){
+		cin>>val;
+		l.insert(val);
+	}
+	l.deletealt();
+	l.deletedup(head);
+	l.reverseprint(head);
+	l.reverse(head);
+	l.display();
+} 
