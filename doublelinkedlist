@@ -9,6 +9,7 @@ class node{
 class DLL{
     public:
     node *head;
+
     node *last;
     DLL(){
         head = NULL;
