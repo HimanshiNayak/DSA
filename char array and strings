@@ -41,3 +41,22 @@ reverse(name,n);
 
     return 0;
 }
+//tolowercase
+
+#include <bits/stdc++.h>
+using namespace std;
+void tolowercase(char ch[],int n){
+    for(int i=0;i<n;i++){
+        ch[i] = ch[i]-'A'+'a';
+    }
+    cout<<"The array converted to lowercase is : "<<ch;
+}
+int main() {
+    int n;
+    cin>>n;
+ char name[n] ;
+ cin>>name ;
+tolowercase(name,n);
+
+    return 0;
+}
