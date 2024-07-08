@@ -47,7 +47,10 @@ reverse(name,n);
 using namespace std;
 void tolowercase(char ch[],int n){
     for(int i=0;i<n;i++){
-        ch[i] = ch[i]-'A'+'a';
+if(ch[i]>='a' && ch[i]<='z'){
+    ch[i]=ch[i];  
+    }
+ch[i] = ch[i]-'A'+'a';
     }
     cout<<"The array converted to lowercase is : "<<ch;
 }
