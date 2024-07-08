@@ -16,3 +16,28 @@ int main() {
 
     return 0;
 }
+
+//reversing a str
+
+#include <bits/stdc++.h>
+using namespace std;
+void reverse(char ch[],int n){
+    int s =0;
+    int e = n-1;
+    while(s<=e){
+        swap(ch[s],ch[e]);
+        s++;
+        e--;
+    }
+    cout<<"reversed string is :"<<ch;
+    
+}
+int main() {
+    int n;
+    cin>>n;
+ char name[n] ;
+ cin>>name ;
+reverse(name,n);
+
+    return 0;
+}
