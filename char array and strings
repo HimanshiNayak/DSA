@@ -1,1 +1,18 @@
+//length of a char array
+#include <bits/stdc++.h>
+using namespace std;
+int length(char a[]){
+    int c =0;
+    for(int i=0;a[i]!= '\0';i++){
+        c++;
+    }
+    return c;
+}
+int main() {
+ char name[20];
+ cin>>name ;
+ int len = length(name);
+ cout<<"The length of your name is: "<<len;
 
+    return 0;
+}
