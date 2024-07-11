@@ -1,1 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+char count(string s){
+    int arr[26]={0};
+   for(int i=0;i<s.length();i++){
+       //get a char fro  string
+       char ch = s[i];
+       //lowercase
+       int num =0;
+       if(ch>='a' && ch<='z'){
+           num = ch-'a'; //to get the index of tat char in the array
+       }
+       //uppercase
+       else{
+           num = ch-'A';
+       }
+       arr[num]++ ; //update the value at that index number
+   } 
+   int maxi=-1,ans =-1;
+   for(int i=0;i<26;i++){
+       if(maxi<arr[i]){
+           maxi= arr[i];
+           ans =i;
+       }
+   }
+   char fans = 'a'+ans;
+}
+
+int main() {
+ char c=  count("hello");
+cout<<c;
+    return 0;
+}
 
