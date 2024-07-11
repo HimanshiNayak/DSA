@@ -32,3 +32,28 @@ cout<<c;
     return 0;
 }
 
+//using unorderd map
+
+#include <bits/stdc++.h>
+using namespace std;
+char count(string s){
+   unordered_map<char,int>m; //define a map
+   char ans;
+   int n = s.length() , cnt=0;
+   for(int i=0;i<n;i++){ //for each letter in the string increase the count when encountered
+       m[s[i]]++;
+       if(cnt<m[s[i]]){ //then check which is greater and update
+           cnt = m[s[i]];
+           ans = s[i];
+       }
+   }
+   return ans;
+   
+   
+}
+
+int main() {
+ char c=  count("hello");
+cout<<c;
+    return 0;
+}
