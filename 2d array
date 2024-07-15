@@ -1,1 +1,46 @@
+#include <iostream>
+using namespace std;
+
+// Search for an element
+bool ispresent(int arr[][4], int target, int m,int n) { // Mention columns, otherwise won't be valid
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (arr[i][j] == target) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+int main() {
+    int m;
+    cin >> m;
+
+    // Since column size must be fixed, ensuring it's 4 as per the ispresent function signature
+    int a[m][4];
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < 4; j++) {
+            cin >> a[i][j];
+        }
+    }
+  int t;
+    cin >> t;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < 4; j++) {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    
+
+    if (ispresent(a, t, m)) {
+        cout << "element found";
+    } else {
+        cout << "not found";
+    }
+
+    return 0;
+}
 
