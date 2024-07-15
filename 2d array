@@ -12,7 +12,26 @@ bool ispresent(int arr[][4], int target, int m,int n) { // Mention columns, othe
     }
     return 0;
 }
-
+void rowwisesum(int arr[][4], int m,int n){
+    int sum=0;
+    cout<<"Row wise sum: ";
+      for (int i = 0; i < m; i++) {
+        for (int j = 0; j < 4; j++) {
+            sum += arr[i][j];
+        }
+        cout<<sum<<" ";
+}
+}
+void colwisesum(int arr[][4], int m,int n){
+    int sum=0;
+    cout<<"column wise sum: ";
+      for (int j = 0; j< 4; j++) {
+        for (int i = 0; i < m; i++) {
+            sum += arr[i][j];
+        }
+        cout<<sum<<" ";
+}
+}
 int main() {
     int m;
     cin >> m;
@@ -33,14 +52,22 @@ int main() {
         cout << endl;
     }
 
-    
+    //to print colwise
+     for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < m; i++) {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
 
-    if (ispresent(a, t, m)) {
+    if (ispresent(a, t, m,4)) {
         cout << "element found";
     } else {
         cout << "not found";
     }
-
+rowwisesum(a,m,4);
+colwisesum(a,m,4);
     return 0;
 }
+
 
