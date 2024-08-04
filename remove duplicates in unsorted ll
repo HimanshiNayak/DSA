@@ -1,0 +1,67 @@
+Node* removeDuplicates(Node* head) {
+    if (head == NULL) return NULL;
+
+    Node* current = head;
+
+    // Outer loop for traversing the list
+    while (current != NULL) {
+        Node* runner = current->next;
+        Node* toDelete = NULL;
+
+        // Inner loop for comparing current node with the rest of the nodes
+        while (runner != NULL) {
+            if (runner->data == current->data) {
+                toDelete = runner;
+                runner = runner->next;
+
+                // Update the links to remove the duplicate node
+                if (toDelete->prev != NULL) {
+                    toDelete->prev->next = toDelete->next;
+                }
+                if (toDelete->next != NULL) {
+                    toDelete->next->prev = toDelete->prev;
+                }
+
+                // Delete the duplicate node
+                delete toDelete;
+            } else {
+                runner = runner->next;
+            }
+        }
+        current = current->next;
+    }
+
+    return head;
+}
+Node* removeDuplicatesAndSort(Node* head) {
+    if (head == NULL) return NULL;
+
+    std::map<int, bool> nodeMap;
+    std::vector<int> uniqueValues;
+    Node* current = head;
+
+    // Traverse the list and store unique values in the map
+    while (current != NULL) {
+        if (nodeMap.find(current->data) == nodeMap.end()) {
+            nodeMap[current->data] = true;
+            uniqueValues.push_back(current->data);
+        }
+        current = current->next;
+    }
+
+    // Sort the unique values
+    std::sort(uniqueValues.begin(), uniqueValues.end());
+
+    // Create a new sorted list from the unique values
+    Node* newHead = new Node(uniqueValues[0]);
+    Node* newCurrent = newHead;
+    for (size_t i = 1; i < uniqueValues.size(); ++i) {
+        Node* newNode = new Node(uniqueValues[i]);
+        newCurrent->next = newNode;
+        newNode->prev = newCurrent;
+        newCurrent = newNode;
+    }
+
+    // Return the head of the new sorted list
+    return newHead;
+}//can use map, sort algo and loops
